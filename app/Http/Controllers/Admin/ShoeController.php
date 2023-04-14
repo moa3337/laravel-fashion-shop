@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Shoe;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ShoeController extends Controller
 {
@@ -14,7 +15,7 @@ class ShoeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.shoes.index', compact('shoes'));
     }
 
     /**
