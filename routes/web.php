@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ShoeController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Guest\HomeController as GuestHomeController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AdminHomeController::class, 'index'])->middleware('auth')->name('home');
+
+Route::get('/', [GuestHomeController::class, 'index'])->middleware('auth')->name('home');
+
+Route::resource( 'shoes', ShoeController::class);
+       
 
 Route::get('/dashboard', function () {
     return view('dashboard');

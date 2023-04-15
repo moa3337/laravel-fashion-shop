@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Shoe;
 use Illuminate\Http\Request;
+<<<<<<< HEAD:app/Http/Controllers/ShoeController.php
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+=======
+use App\Http\Controllers\Controller;
+>>>>>>> b67d91ea387ab711302120c542673352a5eae859:app/Http/Controllers/Admin/ShoeController.php
 
 class ShoeController extends Controller
 {
@@ -17,11 +21,15 @@ class ShoeController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD:app/Http/Controllers/ShoeController.php
         $newShoe = Shoe::all();
         dd($newShoe);
 
         //$shoes = Shoe::orderBy('updated_at', 'DESC')->paginate(12);
         return view('index', compact('newShoe'));
+=======
+        return view('admin.shoes.index', compact('shoes'));
+>>>>>>> b67d91ea387ab711302120c542673352a5eae859:app/Http/Controllers/Admin/ShoeController.php
     }
 
     /**
