@@ -16,7 +16,7 @@
                     <small><strong>Tipo scarpa: </strong>{{ $shoe->type }}</small><br>
                     <small><strong>Numero scarpa: </strong>{{ $shoe->number }}</small><br>
                     <small><strong>Colore: </strong>{{ $shoe->color }}</small><br>
-                    <small><strong>Quantità disponibile: </strong>{{ $shoe->color }}</small><br>
+                    <small><strong>Quantità disponibile: </strong>{{ $shoe->quantity }}</small><br>
                     <small class="text-light bg-success p-1">
                         <strong>Prodotto disponibile in magazino</strong>
                     </small>
