@@ -20,6 +20,7 @@
             <tbody>
                 {{--
             @forelse ($newShoe as $shoe)
+            
                 <tr>
                     <th scope="row">{{ $shoe->id }}</th>
                     <td>{{ $shoe->model }}</td>

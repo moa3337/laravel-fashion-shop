@@ -17,6 +17,7 @@ class ShoeSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i = 0; $i < 30; $i++) {
+
             $newShoe = new Shoe;
             $newShoe->model = $faker->name();
             $newShoe->type = $faker->company();

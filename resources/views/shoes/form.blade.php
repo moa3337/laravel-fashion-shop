@@ -7,6 +7,7 @@
     <a href="{{ route('index') }}">
         Torna alle scarpe
     </a>
+    
 {{--
     @if ($shoe->id)
         <a href="{{ route('shoes.show', $shoe) }}" class="ms-3">
