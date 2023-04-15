@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $newShoe->id ? 'modifica il prodotto' : 'Aggiungi una nuova scarpa')
+@section('title', $shoe->id ? 'modifica il prodotto' : 'Aggiungi una nuova scarpa')
 
 @section('actions')
 <div>
@@ -9,7 +9,7 @@
     </a>
     
 
-    @if ($newShoe->id)
+    @if ($shoe->id)
         <a href="{{ route('shoes.show', $shoe) }}" class="ms-3">
             Mostra scarpa
         </a>   
@@ -24,7 +24,7 @@
 <section class="card">
     <div class="card-body">
 
-    @if ($newShoe->id)
+    @if ($shoe->id)
         <form method="POST" action="{{ route('shoes.update', $shoe) }}" class="row" enctype="multipart/form-data">
         @method('PUT')
     @else

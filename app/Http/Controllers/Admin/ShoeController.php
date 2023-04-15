@@ -29,10 +29,10 @@ class ShoeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Shoe $shoe)
     {
-        $newShoe = new Shoe;
-        return view('admin.shoes.form', compact('newShoe'));
+        //$newShoe = new Shoe;
+        return view('admin.shoes.form', compact('shoe'));
     }
 
     /**
