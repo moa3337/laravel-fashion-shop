@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Shoe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class ShoeController extends Controller
 {
@@ -14,7 +17,10 @@ class ShoeController extends Controller
      */
     public function index()
     {
-        //
+        $newShoe = Shoe::all();
+        dd($newShoe);
+        //$shoes = Shoe::orderBy('updated_at', 'DESC')->paginate(12);
+        return view('index', compact('newShoe'));
     }
 
     /**
@@ -24,7 +30,8 @@ class ShoeController extends Controller
      */
     public function create()
     {
-        //
+        $newShoe = new Shoe;
+        return view('shoes.form', compact('newShoe'));
     }
 
     /**
@@ -35,7 +42,20 @@ class ShoeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        if (Arr::exists($data, 'image')) {
+            $path = Storage::put('uploads/shoes', $data['image']);
+            //$data['image'] = $path;
+        }
+
+        $newShoe = new Shoe;
+        $newShoe->fill($data);
+        $newShoe->image = $path;
+        $newShoe->save();
+
+        return to_route('shoes.show', $newShoe)
+            ->with('message', 'Prodotto aggiunto con successo');
     }
 
     /**
@@ -46,7 +66,7 @@ class ShoeController extends Controller
      */
     public function show(Shoe $shoe)
     {
-        //
+        return view('shoes.show', compact('shoe'));
     }
 
     /**
@@ -57,7 +77,7 @@ class ShoeController extends Controller
      */
     public function edit(Shoe $shoe)
     {
-        //
+        return view('shoes.form', compact('shoe'));
     }
 
     /**

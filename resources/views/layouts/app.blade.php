@@ -86,9 +86,28 @@
         </nav>
 
         <main class="">
+            <main class="container">
+            <div>
+                <h2>
+                    @yield('title')
+                </h2>
+            
+                @yield('actions')
+            </div>
+            
+            {{-- IF PER L'ALLERT PRONTO ALL'USO --}}
+            {{-- @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif --}}
+
             @yield('content')
         </main>
+        </main>
     </div>
+
+    @yield('modals')
 </body>
 
 </html>
