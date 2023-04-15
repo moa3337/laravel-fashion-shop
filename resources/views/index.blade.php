@@ -3,7 +3,7 @@
 @section('name', 'Shoes Store')
 
 @section('content')
-@dd($newShoe)
+@dd($newShoe) 
 
 <section>
     <div class="container">
