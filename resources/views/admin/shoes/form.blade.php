@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', $shoe->id ? 'modifica il prodotto' : 'Aggiungi una nuova scarpa')
+@section('title', $newShoe->id ? 'modifica il prodotto' : 'Aggiungi una nuova scarpa')
 
 @section('actions')
 <div>
-    <a href="{{ route('index') }}">
+    <a href="{{ route('shoes.index') }}">
         Torna alle scarpe
     </a>
     
-{{--
-    @if ($shoe->id)
+
+    @if ($newShoe->id)
         <a href="{{ route('shoes.show', $shoe) }}" class="ms-3">
             Mostra scarpa
         </a>   
@@ -19,12 +19,12 @@
 
 @section('content')
 
-@include('layouts.partials.errors')
+{{--@include('layouts.partials.errors')--}}
 
 <section class="card">
     <div class="card-body">
 
-    @if ($shoe->id)
+    @if ($newShoe->id)
         <form method="POST" action="{{ route('shoes.update', $shoe) }}" class="row" enctype="multipart/form-data">
         @method('PUT')
     @else
@@ -49,7 +49,7 @@
                     </div>
                 @enderror
                 <div class="preview">
-                    <img src="{{ $shoe->getImageUri() }}" class="w-25" alt="">
+                    <img src="{{-- $shoe->image --}}" class="w-25" alt="">
                 </div>
             </div>
 

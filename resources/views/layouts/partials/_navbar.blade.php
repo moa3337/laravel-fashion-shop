@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link fw-bolder" href="{{ url('/') }}">{{ __('Home') }}</a>
                 </li>
+                <li class="nav-item">
+                            <a class="nav-link" href="{{ route('shoes.index') }}">{{ __('Shoes') }}</a>
+                        </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
