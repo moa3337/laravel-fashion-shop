@@ -19,7 +19,6 @@ class ShoeController extends Controller
     {
         $newShoe = Shoe::all();
         dd($newShoe);
-
         //$shoes = Shoe::orderBy('updated_at', 'DESC')->paginate(12);
         return view('index', compact('newShoe'));
     }

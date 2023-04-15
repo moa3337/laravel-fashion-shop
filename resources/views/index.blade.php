@@ -4,6 +4,7 @@
 
 @section('content')
 @dd($newShoe)
+
 <section>
     <div class="container">
         <table class="table">
