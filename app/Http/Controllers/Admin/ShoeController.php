@@ -42,7 +42,35 @@ class ShoeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+            'model'=>'required|string|max:50',
+            'type'=>'required|string|max:100',
+            'number'=>'required|integer',
+            'color'=>'required|lowercase',
+            'quantity'=>'required|integer|min:50',
+
+        ],
+        [
+            'model'=>'Il modello è richiesto',
+            'model'=>'Il modello deve avere un nome',
+            'model'=>'Lunghezza massima per il nome del modello 50 caratteri',
+            'type'=>'Il tipo è richiesto',
+            'type'=>'Il tipo deve essere una parola',
+            'type'=>'Lunghezza massima per il nome del modello 100 caratteri',
+            'number'=>'Il numero di scarpe è richiesto',
+            'number'=>'Devi inserire un numero',
+            'color'=>'Il colore delle scarpe è richiesto',
+            'color'=>'Puoi inserire solo caratteri minuscoli',
+            'quantity'=>'La quantità è richiesta',
+            'quantity'=>'Devi inserire un numero',
+            'quantity'=>'Il numero minimo inseribile per lo store è di 50 pezzi',
+            
+            
+
+        ]);
+
+
         $data = $request->all();
 
         if (Arr::exists($data, 'image')) {
