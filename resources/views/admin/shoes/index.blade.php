@@ -4,12 +4,18 @@
 
 @section('actions')
     <div>
-        <a href="{{ route('shoes.create') }}" class="btn btn-primary my-3">
-            crea nuovo
+        <a href="{{ route('shoes.create') }}" class="btn btn-primary my-4 fw-bold">
+            Inserisci una nuova scarpa
         </a>
     </div>
 @endsection
 @section('content')
+
+@if (session('message'))
+<div class="alert alert-danger my-3">
+    {{ session('message') }}
+</div>
+@endif
 
     <table class="table table-striped table-light align-middle w-auto">
         <thead class="table-head">
@@ -60,21 +66,21 @@
         @foreach ($newShoe as $shoe)
             <div class="modal fade" id="delete-{{ $shoe->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $shoe->model }}</h1>
+                            <h1 class="modal-title fs-5 text-light fw-bold" id="exampleModalLabel">{{ $shoe->model }}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body fw-bold">
                             Vuoi eliminare questa scarpa?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Annulla</button>
                             <form action="{{ route('shoes.destroy', $shoe) }}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-primary">Conferma</button>
+                                <button type="submit" class="btn btn-primary fw-bold">Conferma</button>
                             </form>
                         </div>
                     </div>

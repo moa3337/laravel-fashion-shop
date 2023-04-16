@@ -136,6 +136,6 @@ class ShoeController extends Controller
     public function destroy(Shoe $shoe)
     {
         $shoe->delete();
-        return redirect()->route('shoes.index');
+        return redirect()->route('shoes.index')->with('message',"La Scarpa $shoe->name è stata eliminata!sei veramente un pazzo");;
     }
 }

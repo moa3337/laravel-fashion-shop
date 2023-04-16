@@ -14,6 +14,11 @@ body {
     );
 }
 
-.pic-large {
-    max-width: 200px;
+.modal-content {
+    background-image: linear-gradient(
+        to bottom,
+        #170399 0%,
+        #9cecf2 50%,
+        #f3f7f7 100%
+    );
 }
