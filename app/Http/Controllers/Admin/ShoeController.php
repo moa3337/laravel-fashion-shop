@@ -5,12 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Shoe;
 use Illuminate\Http\Request;
-<<<<<<< HEAD:app/Http/Controllers/ShoeController.php
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
-=======
-use App\Http\Controllers\Controller;
->>>>>>> b67d91ea387ab711302120c542673352a5eae859:app/Http/Controllers/Admin/ShoeController.php
 
 class ShoeController extends Controller
 {
@@ -21,15 +17,11 @@ class ShoeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD:app/Http/Controllers/ShoeController.php
-        $newShoe = Shoe::all();
-        dd($newShoe);
+        $newShoe = Shoe::orderBy('updated_at', 'DESC')->paginate(10);
+        //dd($newShoe);
 
         //$shoes = Shoe::orderBy('updated_at', 'DESC')->paginate(12);
-        return view('index', compact('newShoe'));
-=======
-        return view('admin.shoes.index', compact('shoes'));
->>>>>>> b67d91ea387ab711302120c542673352a5eae859:app/Http/Controllers/Admin/ShoeController.php
+        return view('admin.shoes.index', compact('newShoe'));
     }
 
     /**
@@ -37,10 +29,10 @@ class ShoeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Shoe $shoe)
     {
         $newShoe = new Shoe;
-        return view('shoes.form', compact('newShoe'));
+        return view('admin.shoes.form', compact('shoe'));
     }
 
     /**
@@ -73,9 +65,12 @@ class ShoeController extends Controller
      * @param  \App\Models\Shoe  $shoe
      * @return \Illuminate\Http\Response
      */
-    public function show(Shoe $shoe)
+    public function show(Request $request)
     {
-        return view('shoes.show', compact('shoe'));
+        $newShoe = new Shoe;
+        $newShoe->fill($request->all());
+        $newShoe->save();
+        return to_route('admin.shoes.show', $newShoe);
     }
 
     /**
@@ -86,7 +81,7 @@ class ShoeController extends Controller
      */
     public function edit(Shoe $shoe)
     {
-        return view('shoes.form', compact('shoe'));
+        return view('admin.shoes.form', compact('shoe'));
     }
 
     /**
