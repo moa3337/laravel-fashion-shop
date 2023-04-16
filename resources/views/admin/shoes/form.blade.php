@@ -4,13 +4,13 @@
 
 @section('actions')
     <div>
-        <a href="{{ route('shoes.index') }}">
+        <a class="btn btn-success my-4" href="{{ route('shoes.index') }}">
             Torna alle scarpe
         </a>
 
 
         @if ($shoe->id)
-            <a href="{{ route('shoes.show', $shoe) }}" class="ms-3">
+            <a href="{{ route('shoes.show', $shoe) }}" class="ms-3 btn btn-primary my-4">
                 Mostra scarpa
             </a>
         @endif
@@ -32,7 +32,7 @@
             @endif
             @csrf
 
-            <div class="col">
+            <div class="col-4">
                 <label for="model" class="form-label">Modello</label>
 
                 <input type="text" name="model" id="model" class="@error('model') is-invalid @enderror form-control" value="{{old('model', $shoe->model)}}"/>
@@ -42,7 +42,9 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
 
+            <div class="col-4">
                 <label for="type" class="form-label">Tipo</label>
 
                 <input type="text" name="type" id="type" class="@error('type') is-invalid @enderror form-control" value="{{old('type', $shoe->type)}}"/>
@@ -52,7 +54,9 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
 
+            <div class="col-2">
                 <label for="=number" class="form-label">Numero</label>
 
                 <input type="text" name="=number" id="=number" class="@error('number') is-invalid @enderror form-control" value="{{old('number', $shoe->number)}}"/>
@@ -62,17 +66,9 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
 
-                <label for="color" class="form-label">Colore</label>
-
-                <input type="text" name="color" id="color" class="@error('color') is-invalid @enderror form-control" value="{{old('color', $shoe->color)}}"/>
-
-                @error('color')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-
+            <div class="col-2">
                 <label for="quantity" class="form-label">Quantita'</label>
 
                 <input type="text" name="quantity" id="quantity" class="@error('quantity') is-invalid @enderror form-control" value="{{old('quantity', $shoe->quantity)}}"/>
@@ -82,12 +78,25 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
 
+            <div class="col-4">
+                <label for="color" class="form-label">Colore</label>
 
+                <input type="text" name="color" id="color" class="@error('color') is-invalid @enderror form-control" value="{{old('color', $shoe->color)}}"/>
+
+                @error('color')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="col-8">
                 <label for="image" class="form-label">Immagine</label>
-
+    
                 <input type="file" name="image" id="image" class="@error('image') is-invalid @enderror form-control" value="{{old('image', $shoe->image)}}"/>
-
+    
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -97,9 +106,15 @@
                     <img src="{{-- $shoe->image --}}" class="w-25" alt="">
                 </div>
             </div>
-
-            <input class="mt-3" type="submit" class="" value="salva" />
-            </form>
-        </div>
-    </section>
+            <div class="col-6">
+                <input class="btn btn-dark mt-3" type="submit"  value="Salva La Scarpa" />
+            </div>
+        </form>
+    </div>
+</section>
 @endsection
+
+
+
+            
+
