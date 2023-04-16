@@ -1,5 +1,15 @@
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 a {
     text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(
+        to top,
+        #050505 0%,
+        #8c8c8b 50%,
+        #f3f7f7 100%
+    );
 }
