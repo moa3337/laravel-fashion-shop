@@ -11,16 +11,17 @@
 @endsection
 @section('content')
 
-    <table class="table table-striped table-light">
+    <table class="table table-striped table-light align-middle w-auto">
         <thead class="table-head">
             <tr>
                 <th scope="col">id</th>
-                <th scope="col">Pic</th>
+                <th  scope="col">Pic</th>
                 <th scope="col">Modello</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Numero</th>
                 <th scope="col">Colere</th>
                 <th scope="col">Quantità</th>
+                <th scope="col">Gestione</th>
             </tr>
         </thead>
         <tbody>
@@ -41,12 +42,12 @@
 
 
                         <a href="{{ route('shoes.show', $shoe) }}">
-                            <i class="bi bi-eye"></i>
+                            <i class="bi bi-eye fs-4"></i>
                         </a>
                         <a href="{{ route('shoes.edit', $shoe) }}">
-                            <i class="bi bi-pencil mx-2"></i>
+                            <i class="bi bi-pencil mx-2 fs-4"></i>
                         </a>
-                        <button class="bi bi-trash mx-2 text-danger" data-bs-toggle="modal"
+                        <button class="bi bi-trash mx-2 text-danger fs-4" data-bs-toggle="modal"
                             data-bs-target="#delete-{{ $shoe->id }}"></button>
                     </td>
                 </tr>
