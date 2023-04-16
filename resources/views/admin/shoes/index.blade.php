@@ -39,24 +39,50 @@
                     <td>{{ $shoe->quantity }}</td>
                     <td>
 
-                        
+
                         <a href="{{ route('shoes.show', $shoe) }}">
                             <i class="bi bi-eye"></i>
                         </a>
                         <a href="{{ route('shoes.edit', $shoe) }}">
                             <i class="bi bi-pencil mx-2"></i>
-                        </a>{{--
-                        <a href="{{ route('admin.shoes.edit', $shoe) }}" data-bs-toggle="modal" data-bs-target="#delete-post-modal-{{ $project->id }}">
-                        <i class="bi bi-trash mx-2 text-danger"></i>
-                        </a>--}}
+                        </a>
+                        <button class="bi bi-trash mx-2 text-danger" data-bs-toggle="modal"
+                            data-bs-target="#delete-{{ $shoe->id }}"></button>
                     </td>
                 </tr>
             @empty
-
-            @endforelse      
-        </tbody>       
+            @endforelse
+        </tbody>
     </table>
-    {{ $newShoe->links() }} 
+
+    @section('modals')
+        @foreach ($newShoe as $shoe)
+            <div class="modal fade" id="delete-{{ $shoe->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $shoe->model }}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Vuoi eliminare questa scarpa?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                            <form action="{{ route('shoes.destroy', $shoe) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-primary">Conferma</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @endsection
+
+    {{ $newShoe->links() }}
 @endsection
 
 
