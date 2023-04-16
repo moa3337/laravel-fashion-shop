@@ -121,7 +121,10 @@ class ShoeController extends Controller
      */
     public function update(Request $request, Shoe $shoe)
     {
-        //
+        $shoe->fill($request->all());
+        
+        $shoe->save();
+        return to_route('shoes.show', $shoe)->with('message',"La Scarpa $shoe->name è stata modificata con successo");
     }
 
     /**
