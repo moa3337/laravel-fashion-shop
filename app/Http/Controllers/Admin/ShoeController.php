@@ -17,7 +17,7 @@ class ShoeController extends Controller
      */
     public function index()
     {
-        $newShoe = Shoe::orderBy('updated_at', 'DESC')->paginate(10);
+        $newShoe = Shoe::orderBy('updated_at', 'DESC')->paginate(7);
         //dd($newShoe);
 
         //$shoes = Shoe::orderBy('updated_at', 'DESC')->paginate(12);

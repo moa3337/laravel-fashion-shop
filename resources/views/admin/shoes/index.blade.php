@@ -4,15 +4,15 @@
 
 @section('actions')
     <div>
-        <a href="{{ route('shoes.create') }}">
+        <a href="{{ route('shoes.create') }}" class="btn btn-primary my-3">
             crea nuovo
         </a>
     </div>
 @endsection
 @section('content')
 
-    <table class="table table-striped">
-        <thead>
+    <table class="table table-striped table-light">
+        <thead class="table-head">
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">Pic</th>
