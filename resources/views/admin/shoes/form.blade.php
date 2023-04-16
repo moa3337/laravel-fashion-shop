@@ -19,7 +19,7 @@
 
 @section('content')
 
-    {{-- @include('layouts.partials.errors') --}}
+    @include('layouts.partials.errors')
 
     <section class="card">
         <div class="card-body">
@@ -34,7 +34,9 @@
 
             <div class="col">
                 <label for="model" class="form-label">Modello</label>
-                <input type="text" name="model" id="model" class="form-control" />
+
+                <input type="text" name="model" id="model" class="@error('model') is-invalid @enderror form-control" />
+
                 @error('model')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -42,7 +44,9 @@
                 @enderror
 
                 <label for="type" class="form-label">Tipo</label>
-                <input type="text" name="type" id="type" class="form-control" />
+
+                <input type="text" name="type" id="type" class="@error('type') is-invalid @enderror form-control" />
+
                 @error('type')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -50,7 +54,9 @@
                 @enderror
 
                 <label for="=number" class="form-label">Numero</label>
-                <input type="text" name="=number" id="=number" class="form-control" />
+
+                <input type="text" name="=number" id="=number" class="@error('number') is-invalid @enderror form-control" />
+
                 @error('number')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -58,7 +64,9 @@
                 @enderror
 
                 <label for="color" class="form-label">Colore</label>
-                <input type="text" name="color" id="color" class="form-control" />
+
+                <input type="text" name="color" id="color" class="@error('color') is-invalid @enderror form-control" />
+
                 @error('color')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -66,7 +74,9 @@
                 @enderror
 
                 <label for="quantity" class="form-label">Quantita'</label>
-                <input type="text" name="quantity" id="quantity" class="form-control" />
+
+                <input type="text" name="quantity" id="quantity" class="@error('quantity') is-invalid @enderror form-control" />
+
                 @error('quantity')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -75,7 +85,9 @@
 
 
                 <label for="image" class="form-label">Immagine</label>
-                <input type="file" name="image" id="image" class="form-control" />
+
+                <input type="file" name="image" id="image" class="@error('image') is-invalid @enderror form-control" />
+
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
