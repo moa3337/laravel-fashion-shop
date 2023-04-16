@@ -17,15 +17,15 @@ class ShoeSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i = 0; $i < 30; $i++) {
-            $newShoe = new Shoe;
-            $newShoe->model = $faker->name();
-            $newShoe->type = $faker->company();
-            $newShoe->number = $faker->randomNumber(2);
-            $newShoe->color = $faker->colorName();
-            $newShoe->quantity = $faker->randomNumber(2);
-            $newShoe->image = "https://picsum.photos/200/100";
+            $shoe = new Shoe;
+            $shoe->model = $faker->name();
+            $shoe->type = $faker->company();
+            $shoe->number = $faker->randomNumber(2);
+            $shoe->color = $faker->colorName();
+            $shoe->quantity = $faker->randomNumber(2);
+            $shoe->image = "https://picsum.photos/200/100";
 
-            $newShoe->save();
+            $shoe->save();
         };
     }
 }
