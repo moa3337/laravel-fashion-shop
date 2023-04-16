@@ -65,12 +65,12 @@ class ShoeController extends Controller
      * @param  \App\Models\Shoe  $shoe
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Shoe $shoe)
     {
         $newShoe = new Shoe;
-        $newShoe->fill($request->all());
-        $newShoe->save();
-        return to_route('admin.shoes.show', $newShoe);
+        // $newShoe->fill($request->all());
+        // $newShoe->save();
+        return view('admin.shoes.show', compact('shoe'));
     }
 
     /**
