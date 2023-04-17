@@ -28,8 +28,7 @@
                     </h5>
                 </div>
                 <div class="col-6">
-                    <img src="{{ $shoe->image ? asset('storage/' . $shoe->image) : 'https://t4.ftcdn.net/jpg/00/18/81/67/360_F_18816750_EhUEXmXzE3YMyegWLTBi68jtCCqjZl2e.jpg' }}"
-                        class="img-fluid" alt="">
+                    <img src="{{ $shoe->image }}" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
