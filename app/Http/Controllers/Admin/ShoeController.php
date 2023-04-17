@@ -65,9 +65,6 @@ class ShoeController extends Controller
             'quantity.required'=>'La quantità è richiesta',
             'quantity.integer'=>'Devi inserire un numero',
             'quantity.min'=>'Il numero minimo inseribile per lo store è di 50 pezzi',
-            
-            
-
         ]);
 
 
