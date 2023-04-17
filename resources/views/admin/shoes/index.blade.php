@@ -51,9 +51,9 @@
                             <i class="bi bi-eye fs-4"></i>
                         </a>
                         <a href="{{ route('shoes.edit', $shoe) }}">
-                            <i class="bi bi-pencil mx-2 fs-4"></i>
+                            <i class="bi bi-pencil fs-4"></i>
                         </a>
-                        <button class="bi bi-trash mx-2 text-danger fs-4" data-bs-toggle="modal"
+                        <button class="bi bi-trash text-danger fs-4" data-bs-toggle="modal"
                             data-bs-target="#delete-{{ $shoe->id }}"></button>
                     </td>
                 </tr>
