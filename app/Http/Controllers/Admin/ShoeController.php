@@ -53,18 +53,18 @@ class ShoeController extends Controller
         ],
         [
             'model.required'=>'Il modello è richiesto',
-            'model.string'=>'Il modello deve avere un nome',
+            'model.string'=>'Il modello deve esseere una stringa',
             'model.max'=>'Lunghezza massima per il nome del modello 50 caratteri',
-            'type'=>'Il tipo è richiesto',
-            'type'=>'Il tipo deve essere una parola',
-            'type'=>'Lunghezza massima per il nome del modello 100 caratteri',
+            'type.required'=>'Il tipo è richiesto',
+            'type.string'=>'Il tipo deve essere una parola',
+            'type.max'=>'Lunghezza massima per il nome del modello 100 caratteri',
             'number.required'=>'Il numero di scarpe è richiesto',
             'number.integer'=>'Devi inserire un numero',
-            'color'=>'Il colore delle scarpe è richiesto',
-            'color'=>'Puoi inserire solo caratteri minuscoli',
-            'quantity'=>'La quantità è richiesta',
-            'quantity'=>'Devi inserire un numero',
-            'quantity'=>'Il numero minimo inseribile per lo store è di 50 pezzi',
+            'color.required'=>'Il colore delle scarpe è richiesto',
+            'color.lowercase'=>'Puoi inserire solo caratteri minuscoli',
+            'quantity.required'=>'La quantità è richiesta',
+            'quantity.integer'=>'Devi inserire un numero',
+            'quantity.min'=>'Il numero minimo inseribile per lo store è di 50 pezzi',
             
             
 
