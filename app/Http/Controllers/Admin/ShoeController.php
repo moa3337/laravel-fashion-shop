@@ -65,12 +65,12 @@ class ShoeController extends Controller
      * @param  \App\Models\Shoe  $shoe
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Shoe $shoe)
     {
         $newShoe = new Shoe;
-        $newShoe->fill($request->all());
-        $newShoe->save();
-        return to_route('admin.shoes.show', $newShoe);
+        //$newShoe->fill($request->all());
+        //$newShoe->save();
+        return view('admin.shoes.show', compact('shoe'));
     }
 
     /**
@@ -79,8 +79,12 @@ class ShoeController extends Controller
      * @param  \App\Models\Shoe  $shoe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shoe $shoe)
+    public function edit(Request $request, Shoe $shoe)
     {
+        $data = $request->all();
+
+        $shoe->fill($data);
+        $shoe->save();
         return view('admin.shoes.form', compact('shoe'));
     }
 
