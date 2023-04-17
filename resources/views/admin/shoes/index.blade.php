@@ -36,7 +36,7 @@
                     <th scope="row">{{ $shoe->id }}</th>
                     <div class="pic">
                         <td>
-                            <img src="{{ $shoe->image }}" class="w-25" alt="">
+                            <img src="{{ $shoe->image }}" class="pic" alt="">
                         </td>
                     </div>
                     <td>{{ $shoe->model }}</td>

@@ -23,7 +23,7 @@ class ShoeSeeder extends Seeder
             $shoe->number = $faker->randomNumber(2);
             $shoe->color = $faker->colorName();
             $shoe->quantity = $faker->randomNumber(2);
-            $shoe->image = $faker->imageUrl();
+            //$shoe->image = $faker->imageUrl();
 
             $shoe->save();
         };
