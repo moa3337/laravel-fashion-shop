@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-success shadow-sm">
+<nav class="navbar navbar-expand-md navbar-bg shadow-sm">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <i class="fa-solid fa-7 fs-1 me-1 seven" style="color: #8fc9b2;"></i>
@@ -15,11 +15,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link fw-bolder" href="{{ url('/') }}">{{ __('Home') }}</a>
+                    <a class="nav-link fw-bolder" style="color: #8fc9b2"
+                        href="{{ url('/') }}">{{ __('Home') }}</a>
                 </li>
                 <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shoes.index') }}">{{ __('Shoes') }}</a>
-                        </li>
+                    <a class="nav-link" style="color: #8fc9b2" href="{{ route('shoes.index') }}">{{ __('Shoes') }}</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -27,17 +28,20 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link fw-bolder" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link fw-bolder" style="color: #8fc9b2"
+                            href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link fw-bolder" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link fw-bolder" style="color: #8fc9b2"
+                                href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bolder" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bolder" style="color: #8fc9b2"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
