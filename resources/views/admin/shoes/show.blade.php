@@ -31,7 +31,6 @@
                     <img src="{{ $shoe->image }}" class="img-fluid" alt="">
                 </div>
             </div>
-
         </div>
 
     </section>
