@@ -35,7 +35,8 @@
             <div class="col-4">
                 <label for="model" class="form-label fw-bold">Modello</label>
 
-                <input type="text" name="model" id="model" class="@error('model') is-invalid @enderror form-control" value="{{old('model', $shoe->model)}}"/>
+                <input type="text" name="model" id="model"
+                    class="@error('model') is-invalid @enderror form-control" value="{{ old('model', $shoe->model) }}" />
 
                 @error('model')
                     <div class="invalid-feedback">
@@ -47,7 +48,8 @@
             <div class="col-4">
                 <label for="type" class="form-label fw-bold">Tipo</label>
 
-                <input type="text" name="type" id="type" class="@error('type') is-invalid @enderror form-control" value="{{old('type', $shoe->type)}}"/>
+                <input type="text" name="type" id="type" class="@error('type') is-invalid @enderror form-control"
+                    value="{{ old('type', $shoe->type) }}" />
 
                 @error('type')
                     <div class="invalid-feedback">
@@ -59,7 +61,8 @@
             <div class="col-2">
                 <label for="=number" class="form-label fw-bold">Numero</label>
 
-                <input type="number" name="number" id="number" class="@error('number') is-invalid @enderror form-control" value="{{old('number', $shoe->number)}}"/>
+                <input type="number" name="number" id="number"
+                    class="@error('number') is-invalid @enderror form-control" value="{{ old('number', $shoe->number) }}" />
 
                 @error('number')
                     <div class="invalid-feedback">
@@ -69,9 +72,11 @@
             </div>
 
             <div class="col-2">
-                <label for="quantity" class="form-label fw-bold">Quantita'</label>
+                <label for="quantity" class="form-label fw-bold">Quantità</label>
 
-                <input type="number" name="quantity" id="quantity" class="@error('quantity') is-invalid @enderror form-control" value="{{old('quantity', $shoe->quantity)}}"/>
+                <input type="number" name="quantity" id="quantity"
+                    class="@error('quantity') is-invalid @enderror form-control"
+                    value="{{ old('quantity', $shoe->quantity) }}" />
 
                 @error('quantity')
                     <div class="invalid-feedback">
@@ -83,7 +88,8 @@
             <div class="col-4">
                 <label for="color" class="form-label fw-bold">Colore</label>
 
-                <input type="text" name="color" id="color" class="@error('color') is-invalid @enderror form-control" value="{{old('color', $shoe->color)}}"/>
+                <input type="text" name="color" id="color"
+                    class="@error('color') is-invalid @enderror form-control" value="{{ old('color', $shoe->color) }}" />
 
                 @error('color')
                     <div class="invalid-feedback">
@@ -94,9 +100,10 @@
 
             <div class="col-8">
                 <label for="image" class="form-label fw-bold">Immagine</label>
-    
-                <input type="file" name="image" id="image" class="@error('image') is-invalid @enderror form-control" value="{{old('image', $shoe->image)}}"/>
-    
+
+                <input type="file" name="image" id="image"
+                    class="@error('image') is-invalid @enderror form-control" value="{{ old('image', $shoe->image) }}" />
+
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -107,14 +114,9 @@
                 </div>
             </div>
             <div class="col-6">
-                <input class="btn btn-dark mt-3 fw-bold" type="submit"  value="Salva La Scarpa" />
+                <input class="btn btn-dark mt-3 fw-bold" type="submit" value="Salva la scarpa" />
             </div>
-        </form>
-    </div>
-</section>
+            </form>
+        </div>
+    </section>
 @endsection
-
-
-
-            
-
