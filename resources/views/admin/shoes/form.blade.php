@@ -59,7 +59,7 @@
             <div class="col-2">
                 <label for="=number" class="form-label fw-bold">Numero</label>
 
-                <input type="text" name="=number" id="=number" class="@error('number') is-invalid @enderror form-control" value="{{old('number', $shoe->number)}}"/>
+                <input type="number" name="number" id="number" class="@error('number') is-invalid @enderror form-control" value="{{old('number', $shoe->number)}}"/>
 
                 @error('number')
                     <div class="invalid-feedback">
@@ -71,7 +71,7 @@
             <div class="col-2">
                 <label for="quantity" class="form-label fw-bold">Quantita'</label>
 
-                <input type="text" name="quantity" id="quantity" class="@error('quantity') is-invalid @enderror form-control" value="{{old('quantity', $shoe->quantity)}}"/>
+                <input type="number" name="quantity" id="quantity" class="@error('quantity') is-invalid @enderror form-control" value="{{old('quantity', $shoe->quantity)}}"/>
 
                 @error('quantity')
                     <div class="invalid-feedback">

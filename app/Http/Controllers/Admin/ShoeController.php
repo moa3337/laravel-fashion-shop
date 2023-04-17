@@ -75,6 +75,7 @@ class ShoeController extends Controller
 
         $data = $request->all();
 
+        $path = null;
         if (Arr::exists($data, 'image')) {
             $path = Storage::put('uploads/shoes', $data['image']);
             //$data['image'] = $path;
