@@ -4,23 +4,30 @@
 
 @section('actions')
     <div>
-        <a href="{{ route('shoes.create') }}">
-            crea nuovo
+        <a href="{{ route('shoes.create') }}" class="btn btn-primary my-4 fw-bold">
+            Inserisci una nuova scarpa
         </a>
     </div>
 @endsection
 @section('content')
 
-    <table class="table table-striped">
-        <thead>
+@if (session('message'))
+<div class="alert alert-danger my-3">
+    {{ session('message') }}
+</div>
+@endif
+
+    <table class="table table-striped table-light align-middle w-auto">
+        <thead class="table-head">
             <tr>
                 <th scope="col">id</th>
-                <th scope="col">Pic</th>
+                <th  scope="col">Pic</th>
                 <th scope="col">Modello</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Numero</th>
                 <th scope="col">Colere</th>
                 <th scope="col">Quantità</th>
+                <th scope="col">Gestione</th>
             </tr>
         </thead>
         <tbody>
@@ -39,24 +46,50 @@
                     <td>{{ $shoe->quantity }}</td>
                     <td>
 
-                        
+
                         <a href="{{ route('shoes.show', $shoe) }}">
-                            <i class="bi bi-eye"></i>
+                            <i class="bi bi-eye fs-4"></i>
                         </a>
                         <a href="{{ route('shoes.edit', $shoe) }}">
-                            <i class="bi bi-pencil mx-2"></i>
-                        </a>{{--
-                        <a href="{{ route('admin.shoes.edit', $shoe) }}" data-bs-toggle="modal" data-bs-target="#delete-post-modal-{{ $project->id }}">
-                        <i class="bi bi-trash mx-2 text-danger"></i>
-                        </a>--}}
+                            <i class="bi bi-pencil mx-2 fs-4"></i>
+                        </a>
+                        <button class="bi bi-trash mx-2 text-danger fs-4" data-bs-toggle="modal"
+                            data-bs-target="#delete-{{ $shoe->id }}"></button>
                     </td>
                 </tr>
             @empty
-
-            @endforelse      
-        </tbody>       
+            @endforelse
+        </tbody>
     </table>
-    {{ $newShoe->links() }} 
+
+    @section('modals')
+        @foreach ($newShoe as $shoe)
+            <div class="modal fade" id="delete-{{ $shoe->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-light fw-bold" id="exampleModalLabel">{{ $shoe->model }}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body fw-bold">
+                            Vuoi eliminare questa scarpa?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Annulla</button>
+                            <form action="{{ route('shoes.destroy', $shoe) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-primary fw-bold">Conferma</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @endsection
+
+    {{ $newShoe->links() }}
 @endsection
 
 

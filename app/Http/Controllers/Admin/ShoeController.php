@@ -17,7 +17,7 @@ class ShoeController extends Controller
      */
     public function index()
     {
-        $newShoe = Shoe::orderBy('updated_at', 'DESC')->paginate(10);
+        $newShoe = Shoe::orderBy('updated_at', 'DESC')->paginate(7);
         //dd($newShoe);
 
         //$shoes = Shoe::orderBy('updated_at', 'DESC')->paginate(12);
@@ -43,6 +43,36 @@ class ShoeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'model' => 'required|string|max:50',
+                'type' => 'required|string|max:100',
+                'number' => 'required|integer',
+                'color' => 'required|lowercase',
+                'quantity' => 'required|integer|min:50',
+
+            ],
+            [
+                'model' => 'Il modello è richiesto',
+                'model' => 'Il modello deve avere un nome',
+                'model' => 'Lunghezza massima per il nome del modello 50 caratteri',
+                'type' => 'Il tipo è richiesto',
+                'type' => 'Il tipo deve essere una parola',
+                'type' => 'Lunghezza massima per il nome del modello 100 caratteri',
+                'number' => 'Il numero di scarpe è richiesto',
+                'number' => 'Devi inserire un numero',
+                'color' => 'Il colore delle scarpe è richiesto',
+                'color' => 'Puoi inserire solo caratteri minuscoli',
+                'quantity' => 'La quantità è richiesta',
+                'quantity' => 'Devi inserire un numero',
+                'quantity' => 'Il numero minimo inseribile per lo store è di 50 pezzi',
+
+
+
+            ]
+        );
+
+
         $data = $request->all();
 
         if (Arr::exists($data, 'image')) {
@@ -97,7 +127,10 @@ class ShoeController extends Controller
      */
     public function update(Request $request, Shoe $shoe)
     {
-        //
+        $shoe->fill($request->all());
+
+        $shoe->save();
+        return to_route('shoes.show', $shoe)->with('message', "La Scarpa $shoe->name è stata modificata con successo");
     }
 
     /**
@@ -108,6 +141,7 @@ class ShoeController extends Controller
      */
     public function destroy(Shoe $shoe)
     {
-        //
+        $shoe->delete();
+        return redirect()->route('shoes.index')->with('message', "La Scarpa $shoe->name è stata eliminata!sei veramente un pazzo");;
     }
 }
