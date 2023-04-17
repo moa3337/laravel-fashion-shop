@@ -42,14 +42,16 @@ class ShoeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $request->validate([
-            'model'=>'required|string|max:50',
-            'type'=>'required|string|max:100',
-            'number'=>'required|integer',
-            'color'=>'required|lowercase',
-            'quantity'=>'required|integer|min:50',
+    {
+        $request->validate(
+            [
+                'model' => 'required|string|max:50',
+                'type' => 'required|string|max:100',
+                'number' => 'required|integer',
+                'color' => 'required|lowercase',
+                'quantity' => 'required|integer|min:50',
 
+<<<<<<< HEAD
         ],
         [
             'model.required'=>'Il modello è richiesto',
@@ -66,6 +68,28 @@ class ShoeController extends Controller
             'quantity.integer'=>'Devi inserire un numero',
             'quantity.min'=>'Il numero minimo inseribile per lo store è di 50 pezzi',
         ]);
+=======
+            ],
+            [
+                'model' => 'Il modello è richiesto',
+                'model' => 'Il modello deve avere un nome',
+                'model' => 'Lunghezza massima per il nome del modello 50 caratteri',
+                'type' => 'Il tipo è richiesto',
+                'type' => 'Il tipo deve essere una parola',
+                'type' => 'Lunghezza massima per il nome del modello 100 caratteri',
+                'number' => 'Il numero di scarpe è richiesto',
+                'number' => 'Devi inserire un numero',
+                'color' => 'Il colore delle scarpe è richiesto',
+                'color' => 'Puoi inserire solo caratteri minuscoli',
+                'quantity' => 'La quantità è richiesta',
+                'quantity' => 'Devi inserire un numero',
+                'quantity' => 'Il numero minimo inseribile per lo store è di 50 pezzi',
+
+
+
+            ]
+        );
+>>>>>>> 170104a8595e8043a9e757975381932494b6efe5
 
 
         $data = $request->all();
@@ -93,9 +117,9 @@ class ShoeController extends Controller
      */
     public function show(Shoe $shoe)
     {
-        // $newShoe = new Shoe;
-        // $newShoe->fill($request->all());
-        // $newShoe->save();
+        $newShoe = new Shoe;
+        //$newShoe->fill($request->all());
+        //$newShoe->save();
         return view('admin.shoes.show', compact('shoe'));
     }
 
@@ -105,8 +129,12 @@ class ShoeController extends Controller
      * @param  \App\Models\Shoe  $shoe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shoe $shoe)
+    public function edit(Request $request, Shoe $shoe)
     {
+        $data = $request->all();
+
+        $shoe->fill($data);
+        $shoe->save();
         return view('admin.shoes.form', compact('shoe'));
     }
 
@@ -119,10 +147,21 @@ class ShoeController extends Controller
      */
     public function update(Request $request, Shoe $shoe)
     {
-        $shoe->fill($request->all());
-        
-        $shoe->save();
-        return to_route('shoes.show', $shoe)->with('message',"La Scarpa $shoe->name è stata modificata con successo");
+        $data = $request->all();
+
+        $path = null;
+        if (Arr::exists($data, 'image')) {
+            $path = Storage::put('uploads/shoes', $data['image']);
+            //$data['image'] = $path;
+        }
+
+        $newShoe = new Shoe;
+        $newShoe->fill($data);
+        $newShoe->image = $path;
+        $newShoe->save();
+
+        return to_route('shoes.show', $newShoe)
+            ->with('message', "La Scarpa $shoe->name è stata modificata con successo");
     }
 
     /**
@@ -134,6 +173,6 @@ class ShoeController extends Controller
     public function destroy(Shoe $shoe)
     {
         $shoe->delete();
-        return redirect()->route('shoes.index')->with('message',"La Scarpa $shoe->name è stata eliminata!sei veramente un pazzo");;
+        return redirect()->route('shoes.index')->with('message', "La Scarpa $shoe->name è stata eliminata!sei veramente un pazzo");;
     }
 }
