@@ -52,14 +52,14 @@ class ShoeController extends Controller
 
         ],
         [
-            'model'=>'Il modello è richiesto',
-            'model'=>'Il modello deve avere un nome',
-            'model'=>'Lunghezza massima per il nome del modello 50 caratteri',
+            'model.required'=>'Il modello è richiesto',
+            'model.string'=>'Il modello deve avere un nome',
+            'model.max'=>'Lunghezza massima per il nome del modello 50 caratteri',
             'type'=>'Il tipo è richiesto',
             'type'=>'Il tipo deve essere una parola',
             'type'=>'Lunghezza massima per il nome del modello 100 caratteri',
-            'number'=>'Il numero di scarpe è richiesto',
-            'number'=>'Devi inserire un numero',
+            'number.required'=>'Il numero di scarpe è richiesto',
+            'number.integer'=>'Devi inserire un numero',
             'color'=>'Il colore delle scarpe è richiesto',
             'color'=>'Puoi inserire solo caratteri minuscoli',
             'quantity'=>'La quantità è richiesta',
@@ -73,6 +73,7 @@ class ShoeController extends Controller
 
         $data = $request->all();
 
+        $path = null;
         if (Arr::exists($data, 'image')) {
             $path = Storage::put('uploads/shoes', $data['image']);
             //$data['image'] = $path;
@@ -95,7 +96,7 @@ class ShoeController extends Controller
      */
     public function show(Shoe $shoe)
     {
-        $newShoe = new Shoe;
+        // $newShoe = new Shoe;
         // $newShoe->fill($request->all());
         // $newShoe->save();
         return view('admin.shoes.show', compact('shoe'));

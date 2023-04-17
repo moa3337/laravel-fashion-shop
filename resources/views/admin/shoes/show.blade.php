@@ -28,7 +28,7 @@
                     </h5>
                 </div>
                 <div class="col-6">
-                    <img src="{{ $shoe->image }}" class="img-fluid" alt="">
+                    <img src="{{ asset('storage/' . $shoe->image) }}" class="img-fluid" alt="">
                 </div>
             </div>
 
