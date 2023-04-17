@@ -128,10 +128,21 @@ class ShoeController extends Controller
      */
     public function update(Request $request, Shoe $shoe)
     {
-        $shoe->fill($request->all());
+        $data = $request->all();
 
-        $shoe->save();
-        return to_route('shoes.show', $shoe)->with('message', "La Scarpa $shoe->name è stata modificata con successo");
+        $path = null;
+        if (Arr::exists($data, 'image')) {
+            $path = Storage::put('uploads/shoes', $data['image']);
+            //$data['image'] = $path;
+        }
+
+        $newShoe = new Shoe;
+        $newShoe->fill($data);
+        $newShoe->image = $path;
+        $newShoe->save();
+
+        return to_route('shoes.show', $newShoe)
+            ->with('message', "La Scarpa $shoe->name è stata modificata con successo");
     }
 
     /**
