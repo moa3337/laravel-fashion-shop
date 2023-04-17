@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <table class="table table-striped table-light align-middle w-auto">
+    <table class="table table-striped table-dark align-middle w-auto">
         <thead class="table-head">
             <tr>
                 <th scope="col">id</th>
