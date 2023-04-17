@@ -7,10 +7,6 @@
         <a href="{{ route('shoes.create') }}" class="btn btn-primary my-4 fw-bold">
             Inserisci una nuova scarpa
         </a>
-
-        <a href="{{ route('admin.shoes.trash') }}" class="btn btn-primary my-4 fw-bold">
-            Vai nel cestino
-        </a>
     </div>
 @endsection
 @section('content')
@@ -49,16 +45,15 @@
                     <td>{{ $shoe->color }}</td>
                     <td>{{ $shoe->quantity }}</td>
                     <td>
-
-
-                        <a href="{{ route('shoes.show', $shoe) }}">
+                        {{-- <a href="{{ route('shoes.show', $shoe) }}">
                             <i class="bi bi-eye fs-4"></i>
                         </a>
                         <a href="{{ route('shoes.edit', $shoe) }}">
                             <i class="bi bi-pencil fs-4"></i>
-                        </a>
+                        </a> --}}
                         <button class="bi bi-trash text-danger fs-4" data-bs-toggle="modal"
-                            data-bs-target="#delete-{{ $shoe->id }}"></button>
+                            data-bs-target="#delete-{{ $shoe->id }}">
+                        </button>
                     </td>
                 </tr>
             @empty

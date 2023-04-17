@@ -30,6 +30,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware("auth")
+    ->prefix("/admin")
+    ->name("admin.")
+    ->group(function(){
+        Route::get("/shoes/trash", [ShoeController::class, "trash"])->name("shoes.trash");
+        Route::put("/shoes/{shoe}/restore", [ShoeController::class, "restore"])->name("shoes.restore");
+        Route::delete("/shoes/{shoe}/force-delete", [ShoeController::class, "forceDelete"])->name("shoes.force-delete");
+
+        Route::resource("shoes", ShoeController::class);
+    });
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

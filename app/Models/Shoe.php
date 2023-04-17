@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shoe extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = ["model", "type", "number", "color", "quantity", "image"];
     public function getAbstract($max = 40)

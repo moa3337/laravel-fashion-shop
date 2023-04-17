@@ -150,6 +150,35 @@ class ShoeController extends Controller
     public function destroy(Shoe $shoe)
     {
         $shoe->delete();
-        return redirect()->route('shoes.index')->with('message', "La Scarpa $shoe->name è stata eliminata!sei veramente un pazzo");;
+        return redirect()->route('shoes.index')->with('message', "La Scarpa $shoe->name è stata eliminata! Sei veramente un pazzo!");
+    }
+
+    public function trash()
+    {
+        $shoes = Shoe::onlyTrashed()->get();
+        return view("shoes.trash", compact("shoes"));
+    }
+
+    public function forceDelete(Int $id)
+    {
+        $shoe = Shoe::where("id", $id)->onlyTrashed()->first();
+        dd($shoe);
+
+        if($shoe->image) Storage::delete($shoe->image);
+        $shoe->forceDelete();
+
+        return to_route("shoes.index")
+            ->with("message_type", "danger")
+            ->with("message_content", "Shoe $id_shoe eliminato definitivamente!");
+    }
+
+    public function restore(Int $id)
+    {
+        $shoe = Shoe::where("id", $id)->onlyTrashed()->first();
+        $shoe->restore();
+
+        return to_route("shoes.index")
+            ->with("message_type", "danger")
+            ->with("message_content", "Shoe $id_shoe eliminato definitivamente!");
     }
 }
