@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'page.name') }}</title>
 
 
     <!-- Fonts -->
@@ -33,23 +33,23 @@
 
         <main class="">
             <main class="container">
-            <div>
-                <h2>
-                    @yield('title')
-                </h2>
-            
-                @yield('actions')
-            </div>
-            
-            {{-- IF PER L'ALLERT PRONTO ALL'USO --}}
-            {{-- @if (session('message'))
+                <div>
+                    <h2>
+                        @yield('title')
+                    </h2>
+
+                    @yield('actions')
+                </div>
+
+                {{-- IF PER L'ALLERT PRONTO ALL'USO --}}
+                {{-- @if (session('message'))
                 <div class="alert alert-success">
                     {{ session('message') }}
                 </div>
             @endif --}}
 
-            @yield('content')
-        </main>
+                @yield('content')
+            </main>
         </main>
     </div>
 

@@ -11,17 +11,17 @@
 @endsection
 @section('content')
 
-@if (session('message'))
-<div class="alert alert-danger my-3">
-    {{ session('message') }}
-</div>
-@endif
+    @if (session('message'))
+        <div class="alert alert-danger my-3">
+            {{ session('message') }}
+        </div>
+    @endif
 
     <table class="table table-striped table-light align-middle w-auto">
         <thead class="table-head">
             <tr>
                 <th scope="col">id</th>
-                <th  scope="col">Pic</th>
+                <th scope="col">Pic</th>
                 <th scope="col">Modello</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Numero</th>
