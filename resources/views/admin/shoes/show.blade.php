@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends('layouts.app')
 @section('title', $shoe->model)
 
 @section('actions')
@@ -8,12 +8,12 @@
 
 @section('content')
 
-@if (session('message'))
-<div class="alert alert-success my-3">
-    {{ session('message') }}
-</div>
-@endif
-    
+    @if (session('message'))
+        <div class="alert alert-success my-3">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <section class="card mt-5">
         <div class="card-body">
             <div class="row">
@@ -24,7 +24,7 @@
                     <h5 class=" my-5"><strong>Colore: </strong>{{ $shoe->color }}</h5>
                     <h5 class=" my-5"><strong>Quantità disponibile: </strong>{{ $shoe->quantity }}</h5>
                     <h5 class="text-light bg-success p-3 my-5 fw-bold">
-                        Prodotto disponibile in magazino
+                        Prodotto disponibile in magazzino
                     </h5>
                 </div>
                 <div class="col-6">
@@ -33,6 +33,6 @@
             </div>
 
         </div>
-        
-    </section> 
+
+    </section>
 @endsection

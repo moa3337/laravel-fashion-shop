@@ -34,7 +34,7 @@
         <main class="">
             <main class="container">
                 <div>
-                    <h2>
+                    <h2 class="mt-4">
                         @yield('title')
                     </h2>
 
