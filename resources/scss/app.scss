@@ -6,19 +6,20 @@ a {
 
 body {
     height: 100vh;
-    background-image: linear-gradient(
-        to top,
-        #170399 0%,
-        #9cecf2 50%,
-        #f3f7f7 100%
-    );
+    background-image: linear-gradient(to top,
+            #170399 0%,
+            #9cecf2 50%,
+            #f3f7f7 100%);
 }
 
 .modal-content {
-    background-image: linear-gradient(
-        to bottom,
-        #170399 0%,
-        #9cecf2 50%,
-        #f3f7f7 100%
-    );
+    background-image: linear-gradient(to bottom,
+            #170399 0%,
+            #9cecf2 50%,
+            #f3f7f7 100%);
+}
+
+.bi-trash {
+    border: none;
+    background-color: transparent;
 }
